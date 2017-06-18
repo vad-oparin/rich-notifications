@@ -17,22 +17,56 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+/**
+ * This is a template for new plugin wrappers
+ *
+ * TODO:
+ * - Add/Change information below
+ * - Document usage (importing, executing main functionality)
+ * - Remove any imports that you are not using
+ * - Add this file to /src/index.ts (follow style of other plugins)
+ * - Remove all the comments included in this template, EXCEPT the @Plugin wrapper docs and any other docs you added
+ * - Remove this note
+ *
+ */
 import { Injectable } from '@angular/core';
-import { Cordova, 
-//    CordovaInstance,
-//    CordovaProperty,
-//    InstanceProperty,
-IonicNativePlugin, Plugin } from '@ionic-native/core';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+/**
+ * @name Rich Notifications
+ * @description
+ * This plugin does something
+ *
+ * @usage
+ * ```typescript
+ * import { RichNotifications } from '@ionic-native/rich-notifications';
+ *
+ *
+ * constructor(private richNotifications: RichNotifications) { }
+ *
+ * ...
+ *
+ *
+ * this.richNotifications.functionName('Hello', 123)
+ *   .then((res: any) => console.log(res))
+ *   .catch((error: any) => console.error(error));
+ *
+ * ```
+ */
 var RichNotifications = (function (_super) {
     __extends(RichNotifications, _super);
     function RichNotifications() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    RichNotifications.prototype.registerNotification = function (date) {
-        return;
+    /**
+     * This function does something
+     * @param arg1 {string} Some param to configure something
+     * @return {Promise<any>} Returns a promise that resolves when something happens
+     */
+    RichNotifications.prototype.testNotification = function (arg1, arg2) {
+        return; // We add return; here to avoid any IDE / Compiler errors
     };
-    RichNotifications.prototype.sendNotification = function (date) {
-        return;
+    RichNotifications.prototype.sendNotification = function (arg1) {
+        return; // We add return; here to avoid any IDE / Compiler errors
     };
     return RichNotifications;
 }(IonicNativePlugin));
@@ -44,17 +78,22 @@ RichNotifications.ctorParameters = function () { return []; };
 __decorate([
     Cordova(),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Date]),
+    __metadata("design:paramtypes", [Date, String]),
     __metadata("design:returntype", Promise)
-], RichNotifications.prototype, "registerNotification", null);
+], RichNotifications.prototype, "testNotification", null);
+__decorate([
+    Cordova(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], RichNotifications.prototype, "sendNotification", null);
 RichNotifications = __decorate([
     Plugin({
         pluginName: 'RichNotifications',
         plugin: 'cordova-plugin-rich-notifications',
         pluginRef: 'CordovaPluginRichNotifications',
-        repo: 'https://github.com/vad-oparin/cordova-plugin-rich-notifications',
-        platforms: ['Android', 'iOS'],
-        install: '',
+        repo: 'https://vinnie777@bitbucket.org/vinnie777/cordova-plugin-rich-notifications.git',
+        platforms: ['Android', 'iOS']
     })
 ], RichNotifications);
 export { RichNotifications };
